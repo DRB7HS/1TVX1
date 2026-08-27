@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACKER TVX</title>
+    <meta property="og:title" content="TVX">
+    <meta property="og:description" content="موقع TVX + موثوق">
+    <meta property="og:image" content="https://i.ibb.co/6c89W288/IMG-3591.jpg">
+    <meta property="og:type" content="website">
+    
+    <meta name="theme-color" content="#bd1e2b">
+   
+    <link rel="icon" type="image/webp" href="https://i.ibb.co/6c89W288/IMG-3591.jpg">
+    <link rel="shortcut icon" href="https://i.ibb.co/6c89W288/IMG-3591.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/6c89W288/IMG-3591.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            background-color: #0b0b0b;
+        }
+
+        .main-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.ibb.co/6c89W288/IMG-3591.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        .side-bar-line {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 70px;
+            height: 100%;
+            background: rgba(15, 15, 15, 0.95);
+            border-left: 1px solid rgba(212, 175, 55, 0.2);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: #d4af37; 
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s, color 0.3s;
+            margin-bottom: 40px;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.1);
+            color: #ffffff;
+        }
+
+        .gold-letters {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            font-size: 28px;
+            font-weight: 900;
+            color: #d4af37;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+            user-select: none;
+            margin-top: 20px;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 260px;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.98);
+            border-left: 2px solid #d4af37;
+            z-index: 9;
+            transition: right 0.4s ease;
+            padding: 80px 20px 20px 20px;
+        }
+
+        .side-menu.active {
+            right: 70px; 
+        }
+
+        .menu-title {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .side-menu .menu-link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+        }
+
+        .btn-download-site {
+            background-color: #0056b3;
+            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.4);
+        }
+        .btn-download-site:hover {
+            background-color: #004085;
+            transform: scale(1.02);
+        }
+
+        .btn-discord {
+            background-color: #5865F2;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+        }
+        .btn-discord:hover {
+            background-color: #4752C4;
+            transform: scale(1.02);
+        }
+
+        .page-container {
+            margin-right: 70px; 
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .page {
+            display: none;
+            width: 100%;
+            max-width: 750px;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .luxury-box {
+            position: relative;
+            width: 100%;
+            background-image: linear-gradient(rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.8)), url('https://i.ibb.co/k2TnxCGj/IMG-3295.webp');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgba(212, 175, 55, 0.25);
+            border-radius: 24px;
+            padding: 50px 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+
+        .main-gates-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+     
+        .gate-premium-btn {
+            position: relative;
+            padding: 30px 20px;
+            border-radius: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .gate-premium-btn:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+
+        .gate-premium-btn i {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .gate-premium-btn p {
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 1.7;
+            font-weight: bold;
+        }
+
+
+        .android-btn-style {
+            background: rgba(20, 35, 25, 0.9);
+            border-color: #34a853;
+            box-shadow: 0 6px 20px rgba(52, 168, 83, 0.25);
+        }
+        .android-btn-style:hover {
+            box-shadow: 0 12px 35px rgba(52, 168, 83, 0.45);
+        }
+        .android-btn-style i {
+            color: #34a853;
+        }
+
+
+        .ios-btn-style {
+            background: rgba(35, 20, 20, 0.9);
+            border-color: #bd1e2b;
+            box-shadow: 0 6px 20px rgba(189, 30, 43, 0.25);
+        }
+        .ios-btn-style:hover {
+            box-shadow: 0 12px 35px rgba(189, 30, 43, 0.45);
+        }
+        .ios-btn-style i {
+            color: #bd1e2b;
+        }
+
+        
+        .pc-btn-style {
+            background: rgba(20, 25, 35, 0.9);
+            border-color: #0056b3;
+            box-shadow: 0 6px 20px rgba(0, 86, 179, 0.25);
+        }
+        .pc-btn-style:hover {
+            box-shadow: 0 12px 35px rgba(0, 86, 179, 0.45);
+            border-color: #d4af37;
+        }
+        .pc-btn-style i {
+            color: #0056b3;
+        }
+
+
+        .gate-premium-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent
+            );
+            transform: skewX(-35deg);
+            animation: globalShine 3s infinite ease-in-out;
+        }
+
+        @keyframes globalShine {
+            0% { left: -150%; }
+            50% { left: 150%; }
+            100% { left: 150%; }
+        }
+
+        .box-title {
+            color: #ffffff;
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+            font-weight: 800;
+        }
+
+        .status-badge-premium {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            background: rgba(10, 30, 15, 0.85);
+            border: 2px solid #2ecc71;
+            padding: 8px 18px;
+            border-radius: 30px;
+            color: #2ecc71;
+            font-weight: 900;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
+            animation: badgePulse 2s infinite ease-in-out;
+        }
+
+        @keyframes badgePulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(46, 204, 113, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(46, 204, 113, 0.7); border-color: #27ae60; }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(46, 204, 113, 0.4); }
+        }
+
+        .status-badge-premium .animated-circle {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .status-badge-premium .animated-circle::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 50%;
+            background-color: #2ecc71;
+            animation: ripple 1.5s infinite ease-out;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        .hack-img-animated {
+            width: 200px;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6));
+            animation: slowFloatAndTilt 4.5s ease-in-out infinite;
+        }
+
+        @keyframes slowFloatAndTilt {
+            0% { transform: rotate(-10deg) translateY(0px); }
+            50% { transform: rotate(-10deg) translateY(-15px); }
+            100% { transform: rotate(-10deg) translateY(0px); }
+        }
+
+        .arceus-img-animated {
+            width: 200px;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6));
+            animation: arceusFloatAndTilt 4.5s ease-in-out infinite;
+        }
+
+        @keyframes arceusFloatAndTilt {
+            0% { transform: rotate(-10deg) translateY(0px); }
+            50% { transform: rotate(-10deg) translateY(-15px); }
+            100% { transform: rotate(-10deg) translateY(0px); }
+        }
+
+        .action-btn-purple {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 360px;
+            padding: 18px 32px;
+            margin: 12px auto;
+            background: linear-gradient(135deg, #6f42c1, #522793); 
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            overflow: hidden; 
+            box-shadow: 0 6px 20px rgba(111, 66, 193, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .action-btn-purple:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(111, 66, 193, 0.7);
+        }
+
+        .action-btn-purple::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.45),
+                transparent
+            );
+            transform: skewX(-35deg);
+            animation: dynamicShine 2.8s infinite ease-in-out;
+        }
+
+        .action-btn-green {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 360px;
+            padding: 18px 32px;
+            margin: 12px auto;
+            background: linear-gradient(135deg, #28a745, #1e7e34); 
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            overflow: hidden; 
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .action-btn-green:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.7);
+        }
+
+        .action-btn-green::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.45),
+                transparent
+            );
+            transform: skewX(-35deg);
+            animation: dynamicShine 2.8s infinite ease-in-out;
+        }
+
+        @keyframes dynamicShine {
+            0% { left: -150%; }
+            50% { left: 150%; }
+            100% { left: 150%; }
+        }
+
+        
+        .action-btn-ios {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 360px;
+            padding: 18px 32px;
+            margin: 12px auto;
+            background: linear-gradient(135deg, #bd1e2b, #8a111a);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(189, 30, 43, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .action-btn-ios:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(189, 30, 43, 0.7);
+        }
+
+        .action-btn-ios::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.45),
+                transparent
+            );
+            transform: skewX(-35deg);
+            animation: dynamicShine 2.8s infinite ease-in-out;
+        }
+
+        
+        .action-btn-pc {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 360px;
+            padding: 18px 32px;
+            margin: 12px auto;
+            background: linear-gradient(135deg, #0056b3, #003a80);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 86, 179, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .action-btn-pc:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 86, 179, 0.7);
+        }
+
+        .action-btn-pc::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.45),
+                transparent
+            );
+            transform: skewX(-35deg);
+            animation: dynamicShine 2.8s infinite ease-in-out;
+        }
+
+        .back-btn {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.25);
+            color: #bbb;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            color: #fff;
+            border-color: #fff;
+            background: rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="main-background"></div>
+    <div class="overlay"></div>
+
+    <div class="side-bar-line">
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="gold-letters">
+            <span>H</span>
+            <span>A</span>
+            <span>C</span>
+            <span>K</span>
+            <span>E</span>
+            <span>R</span>
+            <span> </span>
+            <span>+</span>
+            <span> </span>
+            <span>T</span>
+            <span>V</span>
+            <span>X</span>
+        </div>
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-title">T V X</div>
+        
+        <a href="https://TVX.com/raw" class="menu-link-btn btn-download-site">
+            <i class="fas fa-download"></i>
+            تنزيل الموقع
+        </a>
+        
+        <a href="https://TVX.com" target="_blank" class="menu-link-btn btn-discord">
+            <i class="fab fa-discord"></i>
+            دخول الديسكورد
+        </a>
+    </div>
+
+    <div class="page-container">
+
+        <div id="homePage" class="page active">
+            <div class="luxury-box">
+                <div class="main-gates-container">
+                    <button class="gate-premium-btn android-btn-style" onclick="showPage('androidHacks')">
+                        <i class="fab fa-android"></i>
+                        <p>هاكات الاندرويد مثل دلتا و غيرها من الهاكات <br> <span style="color: #34a853; font-size: 15px;">+ Android فقط</span></p>
+                    </button>
+
+                    
+                    <button class="gate-premium-btn pc-btn-style" onclick="showPage('pcHacks')">
+                        <i class="fas fa-desktop"></i>
+                        <p>هاكات البي سي مثل اكسينيو و غيرها من الهاكات <br> <span style="color: #0056b3; font-size: 15px;">+ PC فقط</span></p>
+                    </button>
+
+                    <button class="gate-premium-btn ios-btn-style" onclick="showPage('iosHacks')">
+                        <i class="fas fa-mobile-alt"></i>
+                        <p>هاكات الآيفون مثل دلتا و غيرها من الهاكات <br> <span style="color: #bd1e2b; font-size: 15px;">+ iOS فقط</span></p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="androidHacksPage" class="page">
+            <div class="luxury-box">
+                <div class="status-badge-premium">
+                    <span class="animated-circle"></span>
+                    شغال
+                </div>
+
+                <h2 class="box-title">دلتا الاندرويد - Delta Android</h2>
+
+                <img src="https://i.postimg.cc/JhrQQYV2/E367-C7-D2-4750-4524-ADD5-B9-A8-DA953734.png" alt="Delta Logo" class="hack-img-animated">
+
+                <a href="https://delta.filenetwork.vip/file/Delta-2.733.988.apk" class="action-btn-purple">
+                    <i class="fas fa-download"></i>
+                    تثبيت دلتا العالمية
+                </a>
+
+                <a href="https://cdn.gloopup.net/file/Delta-2.717.985-VN.apk" class="action-btn-purple">
+                    <i class="fas fa-download"></i>
+                   تثبيت دلتا الفتنامية
+                </a>
+
+                <h2 class="box-title">اركيوس الاندرويد - Arceus Android</h2>
+         
+                <img src="https://i.ibb.co/tPCLz6X3/IMG-3440.jpg" alt="Arceus Logo" class="arceus-img-animated">
+
+                <a href="https://release-assets.githubusercontent.com/github-production-release-asset/1155483260/ca313cf9-d98c-4ecd-a4fd-e164eaa5a8b4?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-08-03T22%3A20%3A09Z&rscd=attachment%3B+filename%3DRoblox.Arceus.X.NEO.2.2.9.apk&rsct=application%2Fvnd.android.package-archive&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-08-03T21%3A19%3A35Z&ske=2026-08-03T22%3A20%3A09Z&sks=b&skv=2018-11-09&sig=HQmzsmJQ40X0k%2Bs4z8CaiiZ9ZEM2f86xegVvh0xGm0I%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc4NTc5NTY5NCwibmJmIjoxNzg1NzkyMDk0LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.pAgtJ2aqENFAvOpqnzBL0dOBklkdg7tZ316ZBMbBngM&response-content-disposition=attachment%3B%20filename%3DRoblox.Arceus.X.NEO.2.2.9.apk&response-content-type=application%2Fvnd.android.package-archive" class="action-btn-green">
+                    <i class="fas fa-download"></i>
+                    تثبيت اركيوس العالمي
+                </a>
+                
+                <br>
+                <button class="back-btn" onclick="showPage('home')">
+                    <i class="fas fa-arrow-right"></i> العودة للرئيسية
+                </button>
+            </div>
+        </div>
+
+       
+        <div id="pcHacksPage" class="page">
+            <div class="luxury-box">
+                <div class="status-badge-premium">
+                    <span class="animated-circle"></span>
+                    شغال
+                </div>
+
+                <h2 class="box-title">Xeno - اكسينيو</h2>
+
+                <img src="https://i.postimg.cc/j5ygNhNZ/AD101609-C2-A8-4-E25-A2-E0-FEDFA8-C740-CF.png" alt="Xeno Logo" class="hack-img-animated">
+
+                <a href="https://download2283.mediafire.com/vpj63d0vp5kgG8BnP5obhZOwxLBWLFSaxUq2I3lyfg0eAOOaLwqsa1hPWI1ZMkwQkqFb4TX-aO9C1lltHdZiRxwZt3DiLoddeP2TJkzj4wO7ADnWR1Or6s5hyyo84oipTCMuQIpIzFKsN1af4A59mS6UxNEx2MIyZtHavRH9Hkw/b3ti9aa23s1bmwg/Xeno-v1.3.55.exe" class="action-btn-pc">
+                    <i class="fas fa-download"></i>
+                    تثبيت اكسينيو عالمي
+                </a>
+
+                <br>
+                <button class="back-btn" onclick="showPage('home')">
+                    <i class="fas fa-arrow-right"></i> العودة للرئيسية
+                </button>
+            </div>
+        </div>
+
+        <div id="iosHacksPage" class="page">
+            <div class="luxury-box">
+                <div class="status-badge-premium">
+                    <span class="animated-circle"></span>
+                    شغال
+                </div>
+
+                <h2 class="box-title">دلتا الايفون - Delta iOS</h2>
+
+                <img src="https://i.postimg.cc/JhrQQYV2/E367-C7-D2-4750-4524-ADD5-B9-A8-DA953734.png" alt="Delta Logo" class="hack-img-animated">
+
+                <a href="https://drb7hs.github.io/TVX.back/" class="action-btn-ios">
+                    <i class="fas fa-download"></i>
+                    تثبيت دلتا العالمية
+                </a>
+
+                <a href="https://drb7hs.github.io/TVX.back/" class="action-btn-ios">
+                    <i class="fas fa-download"></i>
+                    تثبيت دلتا الفتنامية
+                </a>
+
+                <br>
+                <button class="back-btn" onclick="showPage('home')">
+                    <i class="fas fa-arrow-right"></i> العودة للرئيسية
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const clickSound = new Audio('https://github.com/Rxz60/MRX/raw/refs/heads/main/ScreenRecording_%D9%A0%D9%A7-%D9%A2%D9%A0-%D9%A2%D9%A0%D9%A2%D9%A6-%D9%A2%D9%A1-%D9%A1%D9%A7-%D9%A1%D9%A8_1.m4a');
+
+        function playClickSound() {
+            clickSound.currentTime = 0;
+            clickSound.play().catch(() => {});
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const clickableElements = document.querySelectorAll('button, a, .gate-premium-btn, .menu-btn, .menu-link-btn, .action-btn-purple, .action-btn-green, .action-btn-pc, .action-btn-ios, .back-btn');
+            
+            clickableElements.forEach(element => {
+                element.addEventListener('click', playClickSound);
+            });
+        });
+
+        function toggleMenu() {
+            const menu = document.getElementById('sideMenu');
+            menu.classList.toggle('active');
+        }
+
+        function showPage(pageId) {
+            document.getElementById('homePage').classList.remove('active');
+            document.getElementById('androidHacksPage').classList.remove('active');
+            document.getElementById('pcHacksPage').classList.remove('active');
+            document.getElementById('iosHacksPage').classList.remove('active');
+            document.getElementById('sideMenu').classList.remove('active');
+
+            if(pageId === 'home') {
+                document.getElementById('homePage').classList.add('active');
+            } else if(pageId === 'androidHacks') {
+                document.getElementById('androidHacksPage').classList.add('active');
+            } else if(pageId === 'pcHacks') {
+                document.getElementById('pcHacksPage').classList.add('active');
+            } else if(pageId === 'iosHacks') {
+                document.getElementById('iosHacksPage').classList.add('active');
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('sideMenu');
+            const menuBtn = document.querySelector('.menu-btn');
+            if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
